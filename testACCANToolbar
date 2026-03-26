@@ -1,0 +1,8 @@
+<html>
+<script type="module" src="https://my-server/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+<body>
+<tableau-viz id="tableauViz"       
+  src='https://public.tableau.com/views/Dashboard1-ACCAN/MainDashboard' toolbar="hidden">
+</tableau-viz>
+</body>
+</html>
