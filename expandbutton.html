@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expand</title>
+<style>
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            height: 100vh;
+
+            background: transparent;
+
+        }
+
+        button {
+
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+
+            border: none;
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+        }
+
+        button:hover {
+
+            transform: scale(1.1);
+
+            box-shadow: 0 6px 28px rgba(99,102,241,0.6);
+
+        }
+
+        button svg {
+
+            width: 22px;
+
+            height: 22px;
+
+            fill: white;
+
+        }
+</style>
+</head>
+<body>
+<button id="myButton" title="Expand Dashboard">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 3h7v2H5v5H3V3zm11 0h7v7h-2V5h-5V3zM3 14h2v5h5v2H3v-7zm16 5h-5v2h7v-7h-2v5z"/>
+</svg>
+</button>
+<script>
+let paramName = window.location.search;
+paramName = paramName.substring(1,paramName.length-1);
+/*
+This code is required when we will migrate to Wix for the expand button
+window.addEventListener('message', function(event) {
+    const data = event.data;
+
+    if (data && data.action === 'init') {
+        console.log('Params received:', data.params);
+
+        // Access specific parameters
+        paramName = data.params.dashboardName; // replace with your actual param name
+        console.log('My param:', paramName);
+    }
+});*/
+
+  console.log('INSIDE JS');
+
+        function sendMessage() {
+          console.log('INSIDE SEND MESSAGE ');
+          
+const endingURL = ':showVizHome=no&toolbar=no';
+  
+            const data = {
+
+                action: 'openModal',
+
+                url: 'https://public.tableau.com/views/'+paramName+'?'+endingURL+''
+
+            };
+			console.log('BEFORE POSTING DATA ==> ');
+            window.parent.postMessage(data, '*');
+
+            window.parent.parent.postMessage(data, '*');
+
+            window.parent.parent.parent.postMessage(data, '*');
+
+        }
+  console.log(document.getElementById("myButton"));
+  document.getElementById("myButton").addEventListener("click", function () {
+    console.log('INSIDE EVENT LISTENER');
+    sendMessage();
+  });
+</script>
+</body>
+</html>
+ 
