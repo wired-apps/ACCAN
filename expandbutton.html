@@ -76,7 +76,7 @@
 <script>
 let paramName = window.location.search;
 console.log(''+paramName);
-paramName = paramName.substring(1,paramName.length-1);
+const dashboardURL = paramName.split('=')[1];
 /*
 This code is required when we will migrate to Wix for the expand button
 window.addEventListener('message', function(event) {
@@ -102,7 +102,7 @@ const endingURL = ':showVizHome=no&toolbar=no';
 
                 action: 'openModal',
 
-                url: 'https://public.tableau.com/views/'+paramName+'?'+endingURL+''
+                url: 'https://public.tableau.com/views/'+dashboardURL+'?'+endingURL+''
 
             };
 			console.log('BEFORE POSTING DATA ==> ');
