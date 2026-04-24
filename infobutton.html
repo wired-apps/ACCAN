@@ -111,9 +111,9 @@
         const params = new URLSearchParams(window.location.search);
         const tooltipText = params.get('tooltip');
 
-        const tooltipEl = document.getElementById('tooltipText');
+        const tooltipEl = document.getElementById('myButton');
         if (tooltipText) {
-            tooltipEl.textContent = decodeURIComponent(tooltipText);
+            tooltipEl.title = decodeURIComponent(tooltipText);
         }
 
       
