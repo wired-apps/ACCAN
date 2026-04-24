@@ -1,79 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Expand</title>
-        <style>
-                * { margin: 0; padding: 0; box-sizing: border-box; }
-                html, body {
-                        /*width: 30px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expand</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            /*width: 30px;
                         height: 30px;*/
-                        overflow: hidden;        /* ✅ removes scrollbar */
-                        background: transparent;
-                        border: transparent;
-                }
-                body {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background: transparent;
-                        border: transparent;
-                }
-                button {
-                        background: transparent;
-                        border: transparent;
-                        width: 100%;
-                        height: 100%;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        /*box-shadow: 0 4px 20px rgba(99,102,241,0.4);*/
-                        transition: transform 0.2s, box-shadow 0.2s;
-                        flex-shrink: 0;          /* ✅ prevents button from shrinking */
-                }
-                button:hover {
-                        transform: scale(1.1);
-                }
-                button svg {
-                        width: 100%;
-                        height: 100%;
-                        fill: #F97132;
-                }
-        </style>
+            overflow: hidden;
+            /* ✅ removes scrollbar */
+            background: transparent;
+            border: transparent;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: transparent;
+        }
+
+        button {
+            background: transparent;
+            border: transparent;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*box-shadow: 0 4px 20px rgba(99,102,241,0.4);*/
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex-shrink: 0;
+            /* ✅ prevents button from shrinking */
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button svg {
+            width: 100%;
+            height: 100%;
+            fill: #F97132;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: sans-serif;
+            white-space: nowrap;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #333;
+        }
+
+        button:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
+
 <body>
-        <button id="myButton" title="Info Dashboard">
-                <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer circle -->
-  <circle cx="15" cy="15" r="13" stroke="black" stroke-width="2" fill="none"/>
-  
-  <!-- Dot -->
-  <circle cx="15" cy="10" r="1.5" fill="black"/>
-  
-  <!-- Line -->
-  <rect x="14" y="13" width="2" height="8" rx="1" fill="black"/>
-</svg>
-        </button>
-        <script>
-                let paramName = window.location.search;
-                const dashboardURL = paramName.split('=')[1];
-                
-                function sendMessage() {
-                        const endingURL = ':showVizHome=no&toolbar=no';
-                        const data = {
-                                action: 'openModal',
-                                url: 'https://public.tableau.com/views/' + dashboardURL + '?' + endingURL
-                        };
-                        window.parent.postMessage(data, '*');
-                        window.parent.parent.postMessage(data, '*');
-                        window.parent.parent.parent.postMessage(data, '*');
-                }
-                
-                document.getElementById("myButton").addEventListener("click", function () {
-                        sendMessage();
-                });
-        </script>
+    <button id="myButton" title="" onmouseover="">
+        <span class="tooltip" id="tooltipText"></span>
+        <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer circle -->
+            <circle cx="15" cy="15" r="13" stroke="#F97132" stroke-width="2" fill="none" />
+
+            <!-- Dot -->
+            <circle cx="15" cy="10" r="1.5" fill="#F97132" />
+
+            <!-- Line -->
+            <rect x="14" y="13" width="2" height="8" rx="1" fill="#F97132" />
+        </svg>
+    </button>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const tooltipText = params.get('tooltip');
+
+        const tooltipEl = document.getElementById('tooltipText');
+        if (tooltipText) {
+            tooltipEl.textContent = decodeURIComponent(tooltipText);
+        }
+
+      
+    </script>
 </body>
+
 </html>
