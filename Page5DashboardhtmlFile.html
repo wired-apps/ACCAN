@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau Dashboard</title>
 
-  <script type="module"
-    src="https://prod-apsoutheast-a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
-  </script>
+    <!-- Tableau Embedding API -->
+    <script type="module"
+        src="https://prod-apsoutheast-a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
+    </script>
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
-    tableau-viz {
-      width: 100%;
-      height: 100vh;
-    }
-  </style>
+        .tableau-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        tableau-viz {
+            width: 100%;
+            max-width: 1400px;
+            height: 2505px;
+        }
+    </style>
 </head>
 <body>
 
-<tableau-viz
-    src="https://prod-apsoutheast-a.online.tableau.com/t/accan/views/Page5/Page5MainDashboard"
-    token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYwZWVkNzlmLWMwNDEtNDBjNi1iNmNlLWI1MTU0OWU5NDZmMyIsImlzcyI6IjAxNTAzMzA0LWE0MjUtNGIzMS05NmI4LTUwZWY1MzhkNWMxNiJ9.eyJqdGkiOiI2NzI1MDM4Ni01ZmRmLTRjNTktYmNmOC1hYTJhMmQ4MjYxOGIiLCJhdWQiOiJ0YWJsZWF1Iiwic3ViIjoic21hcmF0aGVAYXRsYXNjb25zLmNvbS5hdSIsInNjcCI6WyJ0YWJsZWF1OnZpZXdzOmVtYmVkIiwidGFibGVhdTp2aWV3czplbWJlZF9hdXRob3JpbmciLCJ0YWJsZWF1Omluc2lnaHRzOmVtYmVkIl0sImV4cCI6MTc3OTc5MTMyNCwiaWF0IjoxNzc5NzkxMjY0fQ.mdOFhHiKtDDcP1MpeqtGr1H9AP_nOpPTHDApeTMmwfY"
-    hide-tabs
-    toolbar="bottom">
-</tableau-viz>
+    <div class="tableau-container">
+
+        <tableau-viz
+            id="tableau-viz"
+            src="https://prod-apsoutheast-a.online.tableau.com/t/accan/views/Page5/Page5MainDashboard"
+            token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYwZWVkNzlmLWMwNDEtNDBjNi1iNmNlLWI1MTU0OWU5NDZmMyIsImlzcyI6IjAxNTAzMzA0LWE0MjUtNGIzMS05NmI4LTUwZWY1MzhkNWMxNiJ9.eyJqdGkiOiI2ZGQ3YWU3My02ODU4LTRjNjQtYWQ2Ny1hZjE5MTI1NTQzNmUiLCJhdWQiOiJ0YWJsZWF1Iiwic3ViIjoic21hcmF0aGVAYXRsYXNjb25zLmNvbS5hdSIsInNjcCI6WyJ0YWJsZWF1OnZpZXdzOmVtYmVkIiwidGFibGVhdTp2aWV3czplbWJlZF9hdXRob3JpbmciLCJ0YWJsZWF1Omluc2lnaHRzOmVtYmVkIl0sImV4cCI6MTc3OTc5MjI4OSwiaWF0IjoxNzc5NzkyMjI5fQ.TMvgubRZ4tnLrU1y800sSxOEVH4O5UwXCUbEbWDb7xQ"
+            hide-tabs
+            toolbar="bottom">
+        </tableau-viz>
+
+    </div>
 
 </body>
 </html>
