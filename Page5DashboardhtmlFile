@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <script type="module"
+    src="https://prod-apsoutheast-a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    tableau-viz {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<tableau-viz
+    src="https://prod-apsoutheast-a.online.tableau.com/t/accan/views/Page5/Page5MainDashboard"
+    token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjYwZWVkNzlmLWMwNDEtNDBjNi1iNmNlLWI1MTU0OWU5NDZmMyIsImlzcyI6IjAxNTAzMzA0LWE0MjUtNGIzMS05NmI4LTUwZWY1MzhkNWMxNiJ9.eyJqdGkiOiI2NzI1MDM4Ni01ZmRmLTRjNTktYmNmOC1hYTJhMmQ4MjYxOGIiLCJhdWQiOiJ0YWJsZWF1Iiwic3ViIjoic21hcmF0aGVAYXRsYXNjb25zLmNvbS5hdSIsInNjcCI6WyJ0YWJsZWF1OnZpZXdzOmVtYmVkIiwidGFibGVhdTp2aWV3czplbWJlZF9hdXRob3JpbmciLCJ0YWJsZWF1Omluc2lnaHRzOmVtYmVkIl0sImV4cCI6MTc3OTc5MTMyNCwiaWF0IjoxNzc5NzkxMjY0fQ.mdOFhHiKtDDcP1MpeqtGr1H9AP_nOpPTHDApeTMmwfY"
+    hide-tabs
+    toolbar="bottom">
+</tableau-viz>
+
+</body>
+</html>
